@@ -19,19 +19,33 @@ class user_model extends CI_Model{
         
     }
 
-    // public function login_check(){
-    //     $email =$this->input->post('email');
-    //     $pass =$this->input->post('pass');
+    public function login_check(){
+        $email =$this->input->post('email');
+        $password =$this->input->post('password');
             
-    //     $this->db->where('name', $email);
-    //     $this->db->where('pass', md5($pass));
-    //     $query= $this->db->get("user");
+        $this->db->where('email', $email);
+        $this->db->where('password', $password);
+        $query= $this->db->get("admin");
+        // $query= $this->db->query("SELECT * FROM `admin` WHERE `email`='$email' AND `password`='$password'");
+        // echo "<pre>";
 
-    //     if ($query->num_rows()==1) {
-    //         return $query->num_rows();
-    //     }
-    //     return false;
-    // }
+        // print_r($query->num_rows());
+        // //var_dump($query);
+        // die();
+        if ($query->num_rows()==1) {
+            return $query->num_rows();
+            // echo "login";
+        }
+        return false;
+    }
+    public function add()
+    {
+        $data=[
+            "email" =>$this->input->post('email'),
+            "password"=> $this->input->post('password')
+        ];
+        return $this->db->insert('admin', $data);
+    }
 
     public function insert_item($image_path)
     {    

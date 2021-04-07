@@ -24,7 +24,16 @@ class Welcome extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->load->model('user_model');
+        if (!$this->session->has_userdata('users')) {
+            return redirect(site_url('login'));
+         }
 
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('users'); // it's unset session value
+        redirect(site_url('login'));
     }
 	public function index()
 	{

@@ -53,8 +53,14 @@ $route['default_controller'] = 'welcome';
 
 // $route['user'] = 'welcome/display';
 $route['add'] = 'welcome/add';
+$route['login'] = 'Admin/login';
+$route['reg'] = 'Admin/reg';
+$route['logout'] = 'welcome/logout';
+
 $route['edit/(:num)'] = "welcome/edit/$1";
 $route['insert']['post'] = 'welcome/insert';
+$route['log']['post'] = 'Admin/login_submit';
+$route['regis']['post'] = 'Admin/regis';
 $route['update/(:any)']["post"] = "welcome/update/$1";
 $route['delete/(:num)'] = "welcome/delete/$1";
 
